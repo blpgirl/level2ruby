@@ -104,3 +104,10 @@ birthday = Date.new(2022, 5, 12)
 time_until = birthday - today
 puts time_until
 puts time_until.to_i  # get the number of days until my birthday
+
+time_in_seconds = ((time_until) * 24 * 60 * 60).to_i #convert to seconds until my birthday
+puts time_in_seconds
+
+puts Date.parse('2001-02-03')     # string to date
+puts Date.parse('3rd Feb 2001')
+puts Date.strptime('03-02-2001', '%d-%m-%Y') #change date format
