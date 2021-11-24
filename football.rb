@@ -35,7 +35,7 @@ class Tournament
   end #initialize
 
   #add a new team to the Tournament
-  def register_a_team(name)
+  def register_a_team(name:) #to make it easier to read i can pass it as name: <name_variable_parameter>, not with symbols
     # The << means add to the end of the array
     @teams << FootballTeam.new(name)
   end #register_a_team
@@ -79,7 +79,7 @@ end #class Tournament
 my_tournament = Tournament.new
 #add the teams
 teams =  ["Team A", "Team B", "Team C", "Team D"]
-teams.each {|team| my_tournament.register_a_team(team)}
+teams.each {|team| my_tournament.register_a_team(name: team)} #to make it easier to read, had to defined parameter as name:
 
 #set the matches results
 results = {1=>{"team1"=>"Team A", "goals1"=>3, "team2"=>"Team B", "goals2"=>1},

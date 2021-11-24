@@ -1,24 +1,15 @@
 #for the ruby oop lesson - final level 2
 class BankAccount
-   def initialize ()
+  attr_accessor :account_name
+
+   #get method, instead of get and set i can just use attr_accessor and is the same. attr_reader is get
+   def account_number
+        @account_number
    end
 
-   #get method
-   def accountNumber
-        @accountNumber
-   end
-
-   #set method
-   def accountNumber=( value )
-        @accountNumber = value
-   end
-
-   def accountName
-        @accountName
-   end
-
-   def accountName=( value )
-        @accountName = value
+   #set method, attr_writer is same as set
+   def account_number=( value )
+        @account_number = value
    end
 
    def interest_rate
@@ -34,31 +25,31 @@ end #class BankAccount
 #NewBankAccount inherits all the BankAccount class functions
 class NewBankAccount < BankAccount
 
-   def customerPhone
-        @customerPhone
+   def customer_phone
+        @customer_phone
    end
 
-   def customerPhone=( value )
-        @customerPhone = value
+   def customer_phone=( value )
+        @customer_phone = value
    end
 
 end
 
 account = BankAccount.new
-account.accountNumber = "54321"
-account.accountName = "Fred Flintstone"
+account.account_number = "54321"
+account.account_name = "Fred Flintstone"
 
-puts account.accountNumber
-puts account.accountName
+puts account.account_number
+puts account.account_name
 puts account.calc_interest( 1000 )
 
 account2 = NewBankAccount.new
-account2.accountNumber = "54321"
-account2.customerPhone = "555-123-5433"
+account2.account_number = "54321"
+account2.customer_phone = "555-123-5433"
 
-puts account2.accountNumber
-puts account2.accountName
-puts account2.customerPhone
+puts account2.account_number
+puts account2.account_name
+puts account2.customer_phone
 puts account2.calc_interest( 1000 )
 
 def coffee
@@ -111,3 +102,55 @@ puts time_in_seconds
 puts Date.parse('2001-02-03')     # string to date
 puts Date.parse('3rd Feb 2001')
 puts Date.strptime('03-02-2001', '%d-%m-%Y') #change date format
+
+
+class Warrior
+  attr_accessor :name, :ki
+
+  def initialize(name:, ki:)
+    @name = name
+    @ki = ki
+  end
+
+  def make_technique(technique:)
+    puts "Making #{technique}"
+  end
+end #class Warrior
+
+class Sayayin < Warrior #inherits warrior
+    attr_accessor :phase
+
+    def initialize(phase:, **options) #options con los ** los vuelve hash
+      super(**options) #executes the method with the same name in the parent class
+                      #so initialize in Warrior class
+      @phase = phase
+    end
+
+    def transform_to(phase:, ki:) #so ii's easier to read the parameters but doesnt work if passing symbols
+      @ki = ki
+      @phase = phase
+      puts "Transforming to #{phase}"
+    end
+end #class sayayin
+
+vegeta = Sayayin.new(
+  phase: "base",
+  name: "vegeta",
+  ki: 3000
+)
+
+vegeta.make_technique(technique: "Final flash") #so it's easier to read, had to define it in parameters like name:
+puts vegeta.phase
+puts vegeta.ki
+vegeta.transform_to(phase: "Ozaru", ki: 3000*10)
+puts vegeta.phase
+puts vegeta.ki
+
+cadena = "ruby desde cero"
+resultado = cadena.upcase
+puts resultado
+puts cadena #todavia en minuscula
+
+resultado = cadena.upcase!
+puts resultado
+puts cadena #se modifico a mayusculas por el !

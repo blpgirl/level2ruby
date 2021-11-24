@@ -33,7 +33,7 @@ end #method convert_temperature_other_division_method
 end #class TemperatureConverter
 
 converter = TemperatureConverter.new
-result = converter.convert_temperature(1, 32)
+result = converter.convert_temperature(1, 32) #not working --> convert_to: 1, temperature: 32 just so is easier to read the parameters
 puts "how much is 32 celsius in fahrenheit? #{result.round}"
 result = converter.convert_temperature(2, 100)
 puts "how much is 100 fahrenheit in celsius? #{result.round}" #if i want decimals i can pass .round(1) or how many i need
